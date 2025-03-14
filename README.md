@@ -6,7 +6,7 @@ Este repositório contém um exemplo de serviço web SOAP. Siga as instruções 
 
 Certifique-se de ter os seguintes itens instalados em sua máquina:
 
-- **Java JDK** (versão 8 ou superior)
+- **Java JDK** (versão 21)
 - **Maven** (para gerenciamento de dependências)
 - Um IDE como **Eclipse** ou **IntelliJ IDEA** (opcional)
 
@@ -68,7 +68,7 @@ Para testar este serviço SOAP usando o Postman, siga os passos abaixo:
    - Dê um nome à sua requisição e salve-a em uma coleção, se desejar.
 
 3. **Configure o método e a URL**:
-   - No campo de URL, insira o endpoint do serviço SOAP (por exemplo, `http://localhost:8080/seu-servico`).
+   - No campo de URL, insira o endpoint do serviço SOAP (por exemplo, `[http://localhost:8081/ws/cep.soap](http://localhost:8081/ws/cep.wsdl)`).
    - Certifique-se de que o método HTTP está definido como `POST`.
 
 4. **Adicione o cabeçalho SOAP**:
@@ -80,14 +80,13 @@ Para testar este serviço SOAP usando o Postman, siga os passos abaixo:
    - Selecione a opção "raw".
    - Insira o XML da requisição SOAP no corpo. Por exemplo:
      ```xml
-     <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ex="http://example.com/">
-         <soapenv:Header/>
-         <soapenv:Body>
-             <ex:YourOperation>
-                 <ex:Parameter1>Value1</ex:Parameter1>
-                 <ex:Parameter2>Value2</ex:Parameter2>
-             </ex:YourOperation>
-         </soapenv:Body>
+     <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cep="http://learningdevops7.xyz/cep">
+       <soapenv:Header/>
+       <soapenv:Body>
+          <cep:ConsultaCEPRequest>
+             <cep>01001000</cep>
+          </cep:ConsultaCEPRequest>
+       </soapenv:Body>
      </soapenv:Envelope>
      ```
 
